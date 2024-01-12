@@ -11,6 +11,7 @@ import TextInput from '@/Components/TextInput.vue';
 const form = useForm({
     name: '',
     is_admin: '',
+    hub: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -47,7 +48,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
             <div>
-                <InputLabel for="is_admin" value="is_admin" />
+                <InputLabel for="is_admin" value="Admin (0=nein / 1=ja)" class="mt-2" />
                 <TextInput
                     id="is_admin"
                     v-model="form.is_admin"
@@ -57,7 +58,21 @@ const submit = () => {
                     autofocus
                     autocomplete="is_admin"
                 />
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-2" :message="form.errors.is_admin" />
+            </div>
+
+            <div>
+                <InputLabel for="hub" value="HUB" class="mt-2"/>
+                <TextInput
+                    id="hub"
+                    v-model="form.hub"
+                    type="text"
+                    class="block w-full mt-1"
+                    required
+                    autofocus
+                    autocomplete="hub"
+                />
+                <InputError class="mt-2" :message="form.errors.hub" />
             </div>
 
             <div class="mt-4">
@@ -117,7 +132,7 @@ const submit = () => {
                     Already registered?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="ms-4 bg-v-darkGreen" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
                 </PrimaryButton>
             </div>

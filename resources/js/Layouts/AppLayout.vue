@@ -281,7 +281,7 @@ const logout = () => {
             </header>
 
             <!-- Page Content -->
-            <main class="bg-v-salbei">
+            <main class="container w-4/5 min-h-screen mx-auto bg-v-salbei">
                 <slot />
             </main>
         </div>
