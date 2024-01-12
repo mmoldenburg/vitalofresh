@@ -44,6 +44,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('/hub', HubController::class);
+
 Route::resource('/company', CompanyController::class);
 Route::resource('/rent', RentController::class);

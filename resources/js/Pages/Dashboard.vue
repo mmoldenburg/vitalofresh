@@ -5,13 +5,13 @@ import Welcome from '@/Components/Welcome.vue';
 
 <template>
     <AppLayout title="Dashboard">
-        <template #header>
+        <!-- <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Dashboard
             </h2>
-        </template>
+        </template> -->
 
-        <div class="py-12">
+        <div class="py-12 mt-2">
 
                 <div class="flex items-center overflow-hidden sm:px-6 lg:px-8">
                     <Welcome />

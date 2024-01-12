@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('by_hub_company');
+            $table->string('hub');
             $table->string('kundenname');
             $table->string('straße');
             $table->string('plz');

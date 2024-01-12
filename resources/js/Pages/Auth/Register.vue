@@ -10,7 +10,7 @@ import TextInput from '@/Components/TextInput.vue';
 
 const form = useForm({
     name: '',
-    is_admin: '',
+    is_admin: 0,
     hub: '',
     email: '',
     password: '',
@@ -48,8 +48,8 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
             <div>
-                <InputLabel for="is_admin" value="Admin (0=nein / 1=ja)" class="mt-2" />
-                <TextInput
+                <InputLabel for="is_admin" value="Admin" class="mt-2" />
+                <!-- <TextInput
                     id="is_admin"
                     v-model="form.is_admin"
                     type="text"
@@ -57,7 +57,11 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="is_admin"
-                />
+                /> -->
+                <select is_admin="" id="is_admin" v-model="form.is_admin" type="text" class="block w-full mt-1" required autofocus autocomplete="hub">
+                    <option value="0">Nein</option>
+                    <option value="1">Ja</option>
+                </select>
                 <InputError class="mt-2" :message="form.errors.is_admin" />
             </div>
 
@@ -72,6 +76,7 @@ const submit = () => {
                     autofocus
                     autocomplete="hub"
                 />
+
                 <InputError class="mt-2" :message="form.errors.hub" />
             </div>
 
@@ -89,7 +94,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Passwort" />
                 <TextInput
                     id="password"
                     v-model="form.password"
@@ -102,7 +107,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" value="Passwort bestätigen" />
                 <TextInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
@@ -129,7 +134,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Already registered?
+                    Bereits registriert?
                 </Link>
 
                 <PrimaryButton class="ms-4 bg-v-darkGreen" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

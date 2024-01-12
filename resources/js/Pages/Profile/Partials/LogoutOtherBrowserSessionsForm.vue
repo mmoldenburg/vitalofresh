@@ -49,12 +49,12 @@ const closeModal = () => {
         </template>
 
         <template #description>
-            Manage and log out your active sessions on other browsers and devices.
+            Verwalten Sie Ihre aktiven Sitzungen auf anderen Browsern und Geräten und melden Sie sich ab.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.
+                Falls erforderlich, können Sie sich von allen anderen Browser-Sitzungen auf allen Ihren Geräten abmelden. Einige Ihrer letzten Sitzungen sind unten aufgeführt; diese Liste ist jedoch möglicherweise nicht vollständig. Wenn Sie glauben, dass Ihr Konto kompromittiert wurde, sollten Sie auch Ihr Passwort aktualisieren.
             </div>
 
             <!-- Other Browser Sessions -->
@@ -79,7 +79,7 @@ const closeModal = () => {
                             <div class="text-xs text-gray-500">
                                 {{ session.ip_address }},
 
-                                <span v-if="session.is_current_device" class="text-green-500 font-semibold">This device</span>
+                                <span v-if="session.is_current_device" class="font-semibold text-green-500">This device</span>
                                 <span v-else>Last active {{ session.last_active }}</span>
                             </div>
                         </div>
@@ -88,8 +88,8 @@ const closeModal = () => {
             </div>
 
             <div class="flex items-center mt-5">
-                <PrimaryButton @click="confirmLogout">
-                    Log Out Other Browser Sessions
+                <PrimaryButton @click="confirmLogout" class="bg-v-darkGreen">
+                    Abmelden von anderen Browser-Sitzungen
                 </PrimaryButton>
 
                 <ActionMessage :on="form.recentlySuccessful" class="ms-3">
@@ -111,7 +111,7 @@ const closeModal = () => {
                             ref="passwordInput"
                             v-model="form.password"
                             type="password"
-                            class="mt-1 block w-3/4"
+                            class="block w-3/4 mt-1"
                             placeholder="Password"
                             autocomplete="current-password"
                             @keyup.enter="logoutOtherBrowserSessions"
