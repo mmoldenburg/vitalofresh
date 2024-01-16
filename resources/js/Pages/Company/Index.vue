@@ -8,7 +8,7 @@
     </div>
 
     <div class="my-12 text-4xl font-bold text-center text-v-darkGreen ">
-        <p>HUB: {{ userhub }} - Unsere vitalofresh Kunden</p>
+        <p>HUB {{ userhub }} - Unsere vitalofresh Kunden</p>
 
     </div>
     <div class="grid w-4/5 grid-cols-3 gap-6 mx-auto my-8">
@@ -23,11 +23,11 @@
 </template>
 
 <script setup>
-import {Link, usePage} from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { computed } from 'vue';
 
-defineProps({
+const props = defineProps({
     companies: Array,
 
 })

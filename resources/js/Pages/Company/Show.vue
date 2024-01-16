@@ -10,7 +10,7 @@
             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left uppercase text-v-darkGreen">Telefon</th>
         </tr>
     </thead>
-    <tbody class="bg-white divide-y divide-gray-200">
+    <tbody class="bg-gray-100 divide-y divide-gray-200 rounded-lg shadow-lg">
         <tr>
             <td class="px-6 py-4 whitespace-nowrap">{{ company.kundenname }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{  company.straße }}</td>
@@ -18,8 +18,11 @@
             <td class="px-6 py-4 whitespace-nowrap">{{  company.kontakt }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{  company.telefon }}</td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <button v-if="useradmin !== 2" class="px-4 py-2 font-medium text-white transition duration-150 ease-in-out bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600">Edit</button>
-                <button v-if="useradmin !== 2" class="px-4 py-2 ml-2 font-medium text-white transition duration-150 ease-in-out bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600">Delete</button>
+                <div v-if="useradmin !== 2">
+                <Link :href="`/company/${company.id}/edit`" class="px-6 py-2 text-lg text-white rounded-lg shadow-xl justify-right bg-v-darkGreen">Edit</Link>
+                <button  class="px-4 py-2 ml-2 font-medium text-white transition duration-150 ease-in-out bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600">Delete</button>
+                </div>
+
             </td>
         </tr>
     </tbody>

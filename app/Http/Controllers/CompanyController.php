@@ -22,6 +22,7 @@ class CompanyController extends Controller
                 'Company/Index',
                 [
                     'companies'=> Company::all()
+
                 ]
             );
         }
@@ -29,7 +30,10 @@ class CompanyController extends Controller
             return inertia(
             'Company/Index',
             [
-                'companies'=> Company::all()->where('hub', $userhub)->where('aktiv', 1)
+                'companies'=> Company::all()
+                    ->where('hub', $userhub)
+                    ->where('aktiv', 1)
+
             ]
         );
         }
@@ -84,7 +88,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return inertia('Company/Edit',
+        [
+            'company'=> $company
+        ]);
     }
 
     /**
@@ -92,7 +99,21 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update(
+            $request->validate([
+                'kundenname' => 'required',
+                'straße' => 'required',
+                'hub' => 'required',
+                'plz' => 'required',
+                'ort' => 'required',
+                'kontakt' => 'required',
+                'telefon' => 'required',
+                'aktiv' => 'required',
+                'created_by' => 'required'
+            ])
+        );
+
+        return redirect()->route('company.index')->with('success', 'Änderungen wurden gespeichert!');
     }
 
     /**
