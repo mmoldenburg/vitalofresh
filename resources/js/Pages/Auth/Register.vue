@@ -59,8 +59,9 @@ const submit = () => {
                     autocomplete="is_admin"
                 /> -->
                 <select is_admin="" id="is_admin" v-model="form.is_admin" type="text" class="block w-full mt-1" required autofocus autocomplete="hub">
-                    <option value="0">Nein</option>
-                    <option value="1">Ja</option>
+                    <option value="0">Superadmin</option>
+                    <option value="1">HUB-Admin</option>
+                    <option value="2">HUB-Mitarbeiter</option>
                 </select>
                 <InputError class="mt-2" :message="form.errors.is_admin" />
             </div>

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('ort');
             $table->string('kontakt');
             $table->string('telefon');
+            $table->tinyInteger('aktiv');
+            $table->string('created_by');
             $table->timestamps();
         });
     }
