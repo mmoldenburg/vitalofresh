@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rent;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
 {
@@ -12,7 +14,30 @@ class RentController extends Controller
      */
     public function index()
     {
-        return inertia('Rent/Index');
+        $admin = Auth::user()->is_admin;
+        $userhub = Auth::user()->hub;
+
+        if($admin == 0){
+            return inertia(
+                'Rent/Index',
+                [
+                    'rents'=> Company::all()
+
+                ]
+            );
+        }
+        else {
+            return inertia(
+            'Rent/Index',
+            [
+                'rents'=> Company::all()
+                    ->where('hub', $userhub)
+                    ->where('aktiv', 1)
+
+            ]
+        );
+        }
+
     }
 
     /**
@@ -34,9 +59,13 @@ class RentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Rent $rent)
+    public function show(Company $rent)
     {
-        //
+        return inertia(
+            'Rent/Show',
+        [
+            'rent'=> $rent
+        ]);
     }
 
     /**

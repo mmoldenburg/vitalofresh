@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('by_company_rents_id');
             $table->integer('gel_bowl');
             $table->integer('gel_flasche');
             $table->integer('gel_glas');
