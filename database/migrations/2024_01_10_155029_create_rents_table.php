@@ -26,12 +26,12 @@ return new class extends Migration
             $table->integer('zur_thermo_gr');
             $table->integer('zur_thermo_kl');
             $table->integer('zur_back_box');
-            $table->integer('diff_bowl');
-            $table->integer('diff_flasche');
-            $table->integer('diff_glas');
-            $table->integer('diff_thermo_gr');
-            $table->integer('diff_thermo_kl');
-            $table->integer('diff_back_box');
+            $table->integer('kum_bowl');
+            $table->integer('kum_flasche');
+            $table->integer('kum_glas');
+            $table->integer('kum_thermo_gr');
+            $table->integer('kum_thermo_kl');
+            $table->integer('kum_back_box');
             $table->timestamps();
         });
     }

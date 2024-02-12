@@ -1,5 +1,6 @@
 <template>
     <AppLayout />
+
     <table class="w-4/5 mx-auto mt-8 divide-y divide-gray-200">
     <thead>
         <tr>

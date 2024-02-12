@@ -23,6 +23,6 @@ class Company extends Model
     ];
     public function rents(): HasMany
     {
-        return $this->hasMany(Rent::class, 'by_company_rents_id');
+        return $this->hasMany(Rent::class, 'by_company_id');
     }
 }

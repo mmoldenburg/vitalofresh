@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Rent;
 use App\Models\Company;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
@@ -14,38 +17,26 @@ class RentController extends Controller
      */
     public function index()
     {
-        $admin = Auth::user()->is_admin;
-        $userhub = Auth::user()->hub;
 
-        if($admin == 0){
-            return inertia(
-                'Rent/Index',
-                [
-                    'rents'=> Company::all()
-
-                ]
-            );
-        }
-        else {
-            return inertia(
+        return inertia(
             'Rent/Index',
             [
-                'rents'=> Company::all()
-                    ->where('hub', $userhub)
-                    ->where('aktiv', 1)
-
-            ]
-        );
+                'allrents' => DB::table('companies')
+                    ->join('rents', 'companies.id', '=', 'rents.by_company_rents_id')
+                    ->select('companies.*', 'rents.by_company_rents_id')
+                    ->distinct('rents.by_company_rents_id')
+                    ->get()
+            ]);
         }
 
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return inertia(
+            'Rent/Create');
     }
 
     /**
@@ -59,13 +50,11 @@ class RentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Company $rent)
+    public function show($rent)
     {
-        return inertia(
-            'Rent/Show',
-        [
-            'rent'=> $rent
-        ]);
+        return inertia('Rent/Show');
+
+
     }
 
     /**

@@ -28,7 +28,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import { computed } from 'vue';
 
 const props = defineProps({
-    companies: Array,
+    'companies': Array,
 
 })
 
